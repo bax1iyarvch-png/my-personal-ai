@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Personal AI</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090b16;color:white;
+ font-family:Arial,sans-serif;
+ display:flex;justify-content:center;
+ min-height:100vh;
+}
+.app{width:100%;max-width:500px;padding:20px}
+header{text-align:center;padding:20px}
+.avatar{
+ width:90px;height:90px;margin:auto;
+ border-radius:50%;display:grid;
+ place-items:center;font-size:45px;
+ background:linear-gradient(135deg,#753bff,#00c8ff);
+ box-shadow:0 0 35px #604bff88;
+}
+h2{color:#b9a7ff}
+#chat{
+ height:55vh;overflow:auto;
+ background:#121628;border-radius:18px;
+ padding:15px;margin:15px 0;
+}
+.msg{padding:12px 15px;border-radius:15px;
+ margin:10px 0;max-width:85%;line-height:1.5}
+.bot{background:#252c46}
+.user{background:#6245db;margin-left:auto}
+form{display:flex;gap:8px}
+input{
+ flex:1;min-width:0;padding:15px;
+ border:1px solid #353d60;border-radius:14px;
+ background:#171d32;color:white;font-size:16px
+}
+button{
+ border:0;border-radius:14px;padding:14px;
+ background:#704bff;color:white;font-weight:bold
+}
+small{color:#9ba4c5}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <div class="avatar">🤖</div>
+ <h2>My Personal AI</h2>
+ <small>Shaxsiy sun'iy intellekt yordamching</small>
+</header>
+<div id="chat">
+ <div class="msg bot">Salom! Men My Personal AI. Sizga qanday yordam bera olaman?</div>
+</div>
+<form id="form">
+ <input id="input" placeholder="Xabar yozing..." autocomplete="off">
+ <button type="submit">➤</button>
+</form>
+</div>
+<script>
+const form=document.getElementById('form');
+const input=document.getElementById('input');
+const chat=document.getElementById('chat');
+
+form.addEventListener('submit',function(e){
+ e.preventDefault();
+ const value=input.value.trim();
+ if(!value)return;
+ const user=document.createElement('div');
+ user.className='msg user';
+ user.textContent=value;
+ chat.appendChild(user);
+ input.value='';
+ const bot=document.createElement('div');
+ bot.className='msg bot';
+ bot.textContent='Xabaringiz qabul qilindi! Haqiqiy AI javoblari uchun AI API ulashimiz kerak.';
+ chat.appendChild(bot);
+ chat.scrollTop=chat.scrollHeight;
+});
+</script>
+</body>
+   </html>
+   
